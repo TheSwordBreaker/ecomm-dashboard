@@ -3,10 +3,15 @@ import { type Config } from "drizzle-kit";
 import { env } from "~/env";
 
 export default {
-  schema: "./src/server/db/schema.ts",
-  dialect: "sqlite",
+  dialect: "postgresql",
+
+  schema: "./src/drizzle/schema.ts",
+  out: "./src/drizzle/",
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["ecomm-dashboard_*"],
+  // Print all statements
+  verbose: true,
+  // Always ask for confirmation
+  strict: true,
 } satisfies Config;

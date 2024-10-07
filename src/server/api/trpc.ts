@@ -7,13 +7,11 @@
  * need to use are documented accordingly near the end.
  */
 
-import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 import { db } from "~/server/db";
-import { currentUser, getAuth } from "@clerk/nextjs/server";
-import { getServerAuthSession } from "../auth";
+import { currentUser } from "@clerk/nextjs/server";
 /**
  * 1. CONTEXT
  *
