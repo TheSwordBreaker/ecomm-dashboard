@@ -11,6 +11,11 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import dynamic from "next/dynamic";
+import { ModelProvider } from "~/providers/modal-provider";
+// import { StoreModal } from "~/components/modals/store-modal";
+
+// const StoreModal = dynamic(() => import("~/components/modals/store-modal"));
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -22,9 +27,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider afterSignOutUrl="/sign-in">
       <html lang="en" className={`${GeistSans.variable}`}>
         <body>
+          <ModelProvider />
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </body>
       </html>
